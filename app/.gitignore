@@ -1,0 +1,11 @@
+//directories
+node_modules/ 
+
+//DB    
+postgres_data
+
+//docker
+docker-compose.yml
+
+//dote
+.env
