@@ -4,13 +4,8 @@ const snowflake = new Snowflake()
 
 const getAll = async () => {
   const err = !(snowflake.connection)
-  const sqlText = `SELECT CARRIER_COMPANY_NAME, CARRIER_TRUCK_COUNT  
-                    FROM ANALYTICS.CMS.V_CARRIERS 
-                    WHERE IS_ACTIVE = 1 
-                    AND COUNTRY_CODE = :1 
-                    AND CARRIER_TRUCK_COUNT >= :2 
-                    ORDER BY CARRIER_TRUCK_COUNT DESC;`
-  const binds = ['MX', 30]
+  const sqlText = 'SELECT * FROM DIGIHAUL.MX_DATA.SHIPMENT WHERE VOLUME_SHIPMENT <= :1'
+  const binds = [2300]
 
   const response = await snowflake.query(sqlText, binds)
 

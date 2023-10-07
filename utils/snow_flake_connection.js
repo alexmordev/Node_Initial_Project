@@ -1,4 +1,5 @@
 const snowflake = require('snowflake-sdk')
+const { config: { SNOWFLAKE } } = require('../config')
 
 class Snowflake {
   constructor () {
@@ -6,15 +7,7 @@ class Snowflake {
   }
 
   getConection () {
-    const connection = snowflake.createConnection({
-      account: 'cp23351.north-europe.azure',
-      username: 'MX_REPORTER',
-      password: '&GISRM33tFGu4*MX',
-      warehouse: 'COMPUTE_WH',
-      database: 'SNOWFLAKE',
-      schema: 'public',
-      port: 443
-    })
+    const connection = snowflake.createConnection(SNOWFLAKE)
     const response = connection.connect((err, conn) => {
       if (err) {
         throw new Error('Unable to connect: ' + err.message)
